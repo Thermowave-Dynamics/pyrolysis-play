@@ -1,11 +1,6 @@
 import React from 'react';
 import { useGameState } from '../hooks/useGameState';
-import { FeedstockLevel } from './FeedstockLevel';
-import { HeatingLevel } from './HeatingLevel';
-import { SortingLevel } from './SortingLevel';
-import { CoolingLevel } from './CoolingLevel';
-import { ResultsLevel } from './ResultsLevel';
-import { StartScreen } from './StartScreen';
+import { StartScreen, FeedstockLevel, HeatingLevel, SortingLevel, CoolingLevel, ResultsLevel } from './Levels';
 import { Progress } from '../components/ui/progress';
 import { TooltipProvider } from '../components/ui/tooltip';
 
@@ -47,8 +42,8 @@ export const GameContainer: React.FC = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold tracking-tighter text-primary glow-cyan">
-              PYROLYSIS PLAY
+            <h1 className="text-3xl font-bold tracking-tighter text-primary glow-red">
+              PYROLYSIS SIMULATOR
             </h1>
             <p className="text-muted-foreground text-sm font-mono uppercase tracking-widest">
               Microwave-Assisted Pyrolysis System v1.0

@@ -15,7 +15,7 @@
     --popover: 222 47% 8%;
     --popover-foreground: 180 20% 98%;
     
-    --primary: 180 100% 50%;
+    --primary: 0 84% 60%;
     --primary-foreground: 222 47% 6%;
     
     --secondary: 222 47% 15%;
@@ -24,7 +24,7 @@
     --muted: 222 47% 20%;
     --muted-foreground: 180 10% 70%;
     
-    --accent: 180 100% 70%;
+    --accent: 0 100% 70%;
     --accent-foreground: 222 47% 6%;
     
     --destructive: 0 84% 60%;
@@ -32,7 +32,7 @@
     
     --border: 222 47% 20%;
     --input: 222 47% 20%;
-    --ring: 180 100% 50%;
+    --ring: 0 84% 60%;
 
     --radius: 0.75rem;
 
@@ -69,7 +69,7 @@
     @apply bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl;
   }
   
-  .glow-cyan {
+  .glow-red {
     box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.5);
   }
 
