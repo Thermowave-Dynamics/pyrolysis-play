@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export type Level = 'input' | 'heating' | 'sorting' | 'cooling' | 'results';
+export type Level = 'start' | 'input' | 'heating' | 'sorting' | 'cooling' | 'results';
 
 interface GameState {
   currentLevel: Level;
@@ -23,7 +23,7 @@ interface GameState {
 }
 
 export const useGameState = create<GameState>((set) => ({
-  currentLevel: 'input',
+  currentLevel: 'start',
   plasticRatio: 50,
   biomassRatio: 50,
   heatingScore: 0,
@@ -42,7 +42,7 @@ export const useGameState = create<GameState>((set) => ({
   setCoolingScore: (score) => set({ coolingScore: score }),
   
   resetGame: () => set({
-    currentLevel: 'input',
+    currentLevel: 'start',
     plasticRatio: 50,
     biomassRatio: 50,
     heatingScore: 0,

@@ -125,8 +125,8 @@ export const SortingLevel: React.FC = () => {
                   drag
                   dragSnapToOrigin
                   onDragEnd={(_, info) => {
-                    // Simple logic: if dropped in top half, check which bin
-                    if (info.point.y < 300) {
+                    // Lowered hitbox to align better with visual bins
+                    if (info.point.y < 450) {
                       const screenWidth = window.innerWidth;
                       const x = info.point.x;
                       if (x < screenWidth / 3) handleSort(block.id, 'fuel');

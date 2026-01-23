@@ -5,6 +5,7 @@ import { HeatingLevel } from './HeatingLevel';
 import { SortingLevel } from './SortingLevel';
 import { CoolingLevel } from './CoolingLevel';
 import { ResultsLevel } from './ResultsLevel';
+import { StartScreen } from './StartScreen';
 import { Progress } from '../components/ui/progress';
 import { TooltipProvider } from '../components/ui/tooltip';
 
@@ -13,6 +14,7 @@ export const GameContainer: React.FC = () => {
 
   const getProgress = () => {
     switch (currentLevel) {
+      case 'start': return 0;
       case 'input': return 20;
       case 'heating': return 40;
       case 'sorting': return 60;
@@ -24,12 +26,13 @@ export const GameContainer: React.FC = () => {
 
   const renderLevel = () => {
     switch (currentLevel) {
+      case 'start': return <StartScreen />;
       case 'input': return <FeedstockLevel />;
       case 'heating': return <HeatingLevel />;
       case 'sorting': return <SortingLevel />;
       case 'cooling': return <CoolingLevel />;
       case 'results': return <ResultsLevel />;
-      default: return <FeedstockLevel />;
+      default: return <StartScreen />;
     }
   };
 
@@ -68,7 +71,7 @@ export const GameContainer: React.FC = () => {
 
         {/* Footer */}
         <footer className="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono text-muted-foreground uppercase">
-          <p>© 2026 PYROLYSIS PLAY LABS</p>
+          <p>© 2026 Thermowave Dynamics</p>
           <p>“This experience is a simplified representation of MAP technology for educational purposes.”</p>
         </footer>
       </div>
