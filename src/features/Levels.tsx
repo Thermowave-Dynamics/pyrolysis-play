@@ -206,6 +206,27 @@ const HeatingLevel: React.FC = () => {
   const mousePos = useRef({ x: -1, y: -1 });
   const [isDone, setIsDone] = useState(false);
 
+  // Lock scrolling on mobile until heating is complete
+  useEffect(() => {
+    if (!isDone) {
+      document.body.style.overflow = 'hidden';
+      // Prevent touchmove defaults as a secondary measure
+      const preventDefault = (e: TouchEvent) => {
+        if (e.target === canvasRef.current) {
+          e.preventDefault();
+        }
+      };
+      document.addEventListener('touchmove', preventDefault, { passive: false });
+      
+      return () => {
+        document.body.style.overflow = 'auto';
+        document.removeEventListener('touchmove', preventDefault);
+      };
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isDone]);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -321,7 +342,7 @@ const HeatingLevel: React.FC = () => {
             onMouseMove={handleMouseMove}
             onTouchMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="rounded-xl border-4 border-white/5 cursor-crosshair glow-red transition-all"
+            className="rounded-xl border-4 border-white/5 cursor-crosshair glow-red transition-all touch-none"
             style={{ imageRendering: 'pixelated' }}
           />
           
@@ -903,7 +924,7 @@ const ResultsLevel: React.FC = () => {
         <Button 
           size="lg" 
           className="neo-button bg-primary text-primary-foreground hover:bg-primary/90"
-          onClick={() => window.open('https://en.wikipedia.org/wiki/Microwave-assisted_pyrolysis', '_blank')}
+          onClick={() => window.open('https://pmc.ncbi.nlm.nih.gov/articles/PMC7117841/', '_blank')}
         >
           <BookOpen className="w-4 h-4 mr-2" />
           LEARN HOW THIS WORKS
