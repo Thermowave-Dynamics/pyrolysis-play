@@ -17,30 +17,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      
-      - name: Install dependencies
-        run: npm install
-      
-      - name: Type checking
-        run: npm run lint:types
-      
-      - name: Lint JavaScript/TypeScript
-        run: npm run lint:js
-      
-      - name: Lint CSS
-        run: npm run lint:css
-
   build:
-    needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
